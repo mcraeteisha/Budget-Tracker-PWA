@@ -1,13 +1,11 @@
 console.log("Hi from your service-worker.js file!");
 
 const FILES_TO_CACHE = [
-    "/",
     "/index.html",
     "/assets/css/style.css",
     "/assets/js/db.js",
     "/assets/js/index.js",
     "/manifest.webmanifest",
-    "/favicon.ico",
     "/assets/icons/icon-192x192.png",
     "/assets/icons/icon-512x512.png",
     "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
