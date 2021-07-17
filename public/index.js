@@ -1,4 +1,4 @@
-import { useIndexedDb } from "./assets/js/indexedDb";
+// import { useIndexedDb } from "./assets/js/indexedDb";
 
 let transactions = [];
 let myChart;
