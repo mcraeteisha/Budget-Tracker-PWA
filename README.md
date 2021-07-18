@@ -19,7 +19,7 @@ Using VS Code, React, Styled Components, and GitHub Pages, I completed the follo
  
 ## Learnings and Issues
 Some of the learnings I'm taking away from this project are:
-1. An issue I ran into with this project was deployment. getting the Heroku app deplyoed using MongoDB Atlas. Also, at times my Service Worker file was throwing errors (I realized I was including uncessesay files in Service Worker doc.)
+1. An issue I ran into with this project was deployment. getting the Heroku app deplyoed using MongoDB Atlas. The fix for this was that in my Config Vars for MongoDB_URI in Heroku, I had "< >" around my password, so MongoDB Atlas was not connecting. Also, at times my Service Worker file was throwing errors and trying to serve the wrong files (I realized I was including uncessesay files in my Service Worker doc. Also, clearing my cache seemed to help).
 
 ## Future Application Updates
 * Create easy-to-use edit and delete buttons for transactions, giving users the option to update their previous transaction history. 
