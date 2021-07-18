@@ -8,8 +8,8 @@ const FILES_TO_CACHE = [
     "/manifest.webmanifest",
     "/icons/icon-192x192.png",
     "/icons/icon-512x512.png",
-    // "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
-    // "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+    "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   ];
 
 const CACHE_NAME = "static-cache-v2";
@@ -48,6 +48,8 @@ self.addEventListener("activate", function(evt) {
 self.addEventListener("fetch", function(evt) {
   // cache successful requests to the API
   if (evt.request.url.includes("/api/")) {
+      console.log('[Service Worker] Fetch(data)', evt.request.url);
+
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
         return fetch(evt.request)
@@ -70,8 +72,10 @@ self.addEventListener("fetch", function(evt) {
   }
 
   evt.respondWith(
-    caches.match(evt.request).then(function(response) {
-      return response || fetch(evt.request);
+    caches.open(CACHE_NAME).then( cache => {
+        return caches.match(evt.request).then(function(response) {
+            return response || fetch(evt.request);
+    });
     })
   );
 });
