@@ -1,18 +1,18 @@
 console.log("Hi from your service-worker.js file!");
 
 const FILES_TO_CACHE = [
+    "/",
     "/index.html",
-    // "/styles.css",
-    // "/db.js",
-    // "/index.js",
-    // "/manifest.webmanifest",
-    // "/icons/icon-192x192.png",
-    // "/icons/icon-512x512.png",
-    // "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
-    // "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    "/styles.css",
+    "/db.js",
+    "/index.js",
+    "/manifest.webmanifest",
+    "/icons/icon-192x192.png",
+    "/icons/icon-512x512.png",
+    "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
   ];
 
-const CACHE_NAME = "static-cache-v2";
+const CACHE_NAME = "static-cache-v3";
 const DATA_CACHE_NAME = "data-cache-v1";
 
 // install
@@ -72,10 +72,15 @@ self.addEventListener("fetch", function(evt) {
   }
 
   evt.respondWith(
-    caches.open(CACHE_NAME).then( cache => {
-        return caches.match(evt.request).then(function(response) {
-            return response || fetch(evt.request);
-    });
+    fetch(evt.request).catch(function () {
+      return caches.match(evt.request).then(function (response) {
+        if (response) {
+          return response;
+        } else if (evt.request.headers.get("accept").includes("text/html")) {
+          // return the cached home page for all requests for html pages
+          return caches.match("/");
+        }
+      });
     })
   );
 });
