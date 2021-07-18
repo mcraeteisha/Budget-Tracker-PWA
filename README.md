@@ -2,7 +2,7 @@
 A Progressive Web App that allows users to add expenses and deposits to their budget with or without an internet connection.
 
 ## Link to Deployed Application
-[PWA Budget Tracker](https://mcraeteisha.github.io/react-portfolio/#about)
+[PWA Budget Tracker](https://vast-sands-44652.herokuapp.com/)
 
 ## Technologies Used
 * Service Workers
