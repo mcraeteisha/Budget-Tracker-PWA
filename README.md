@@ -13,7 +13,7 @@ A Progressive Web App that allows users to add expenses and deposits to their bu
  
 ## Work Completed
 
-Using VS Code, React, Styled Components, and GitHub Pages, I completed the following:
+Using VS Code, Google Chrome Developer Tools, and the technologies listed above, I completed the following:
 
 * Converted an existing web application to a PWA with offline functionality.
  
